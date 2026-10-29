@@ -9,7 +9,8 @@ BASE=ROOT.parent
 (ROOT/'scripts').mkdir(exist_ok=True)
 (ROOT/'assets').mkdir(exist_ok=True)
 PHOTO=ROOT/'assets/portrait.png'
-data=base64.b64encode(PHOTO.read_bytes()).decode()
+portrait_svg=(ROOT/'assets/portrait-paths.svg').read_text(encoding='utf-8')
+portrait=portrait_svg[portrait_svg.index('<g '):portrait_svg.rindex('</svg>')]
 rng=np.random.default_rng(21)
 N=720
 
@@ -38,7 +39,7 @@ def txt(x,y,s,size=14,color='#94A3B8',extra=''):
 for mode,bg,panel,ink,muted,cyan,purple,border in [('dark','#0A101F','#0D1528','#F8FAFC','#94A3B8','#22D3EE','#A78BFA','#233047'),('light','#F8FAFC','#EFF4FA','#0F172A','#475569','#0891B2','#7C3AED','#CBD5E1')]:
     p=[f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1180" height="610" viewBox="0 0 1180 610" role="img" aria-labelledby="title desc"><title id="title">Smirthika Dharmalingam — live developer terminal</title><desc id="desc">AI Developer and Full-Stack Builder. An animated dotted portrait transitions into code, React and agent-network motifs. Python, TypeScript, React, Next.js, Django, FastAPI, MySQL and Supabase.</desc>']
     p.append('''<style>@keyframes pulse{50%{opacity:.35}}.live{animation:pulse 1.8s ease-in-out infinite}@keyframes reveal{from{opacity:0}to{opacity:1}}.intro{animation:reveal 2s ease-out both}.still{display:none}@media(prefers-reduced-motion:reduce){.live,.intro{animation:none}.motion{display:none}.still{display:inline}}</style>''')
-    p.append(f'<defs><image id="portrait" x="55" y="131" width="344" height="365" preserveAspectRatio="xMidYMid meet" xlink:href="data:image/png;base64,{data}"/><clipPath id="portraitClip"><rect x="45" y="116" width="365" height="402" rx="8"/></clipPath></defs>')
+    p.append(f'<defs>{portrait}<clipPath id="portraitClip"><rect x="45" y="116" width="365" height="402" rx="8"/></clipPath></defs>')
     p.append(f'<rect x="1" y="1" width="1178" height="608" rx="18" fill="{bg}" stroke="{border}" stroke-width="2"/><path d="M1 51H1179" stroke="{border}"/>')
     for x,color in [(25,'#F87171'),(47,'#FBBF24'),(69,'#10B981')]:p.append(f'<circle cx="{x}" cy="26" r="6" fill="{color}"/>')
     p.append(txt(99,31,'profile.sh --live',14,muted)+txt(1029,31,'UTF-8 / SSH',12,muted))
