@@ -10,7 +10,9 @@ BASE=ROOT.parent
 (ROOT/'assets').mkdir(exist_ok=True)
 PHOTO=ROOT/'assets/portrait.png'
 portrait_svg=(ROOT/'assets/portrait-paths.svg').read_text(encoding='utf-8')
-portrait=portrait_svg[portrait_svg.index('<g '):portrait_svg.rindex('</svg>')]
+portrait=portrait_svg[portrait_svg.index('<g '):portrait_svg.rindex('</svg>')].replace('translate(55 131) scale(1.1467 1.1406)', 'translate(75 115) scale(1 .90)')
+toolbox_svg=(ROOT/'assets/toolbox-fragment.svg').read_text(encoding='utf-8')
+toolbox=toolbox_svg[toolbox_svg.index('<g '):toolbox_svg.rindex('</svg>')]
 rng=np.random.default_rng(21)
 N=720
 
@@ -48,12 +50,12 @@ for mode,bg,panel,ink,muted,cyan,purple,border in [('dark','#0A101F','#0D1528','
     p.append(f'<rect x="30" y="104" width="395" height="430" rx="10" fill="{panel}" stroke="{border}"/>')
     # One embedded portrait, referenced by both the intro and repeated dissolve layers.
     p.append('<g clip-path="url(#portraitClip)"><g class="motion"><use xlink:href="#portrait"/><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;.2113;.3028;.9085;1" begin="3.2s" dur="14.2s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0 0;0 0;35 0;35 0;0 0" keyTimes="0;.2113;.3028;.9085;1" begin="3.2s" dur="14.2s" repeatCount="indefinite"/></g><g class="still"><use xlink:href="#portrait"/></g></g>')
-    p.append(f'<g class="motion" transform="translate(77 122)" fill="{purple}" opacity="0"><animate attributeName="opacity" values="0;0;1;1;1;1;1;1;0" keyTimes="0;.2113;.3028;.4437;.5352;.6761;.7676;.9085;1" begin="3.2s" dur="14.2s" repeatCount="indefinite"/>')
+    p.append(f'<g class="motion" transform="translate(107 100) scale(.8)" fill="{purple}" opacity="0"><animate attributeName="opacity" values="0;0;1;1;1;1;1;1;0" keyTimes="0;.2113;.3028;.4437;.5352;.6761;.7676;.9085;1" begin="3.2s" dur="14.2s" repeatCount="indefinite"/>')
     for i in range(N):
         a,b,c=[s[i] for s in shapes]
         xs=[a[0],a[0],a[0],a[0],b[0],b[0],c[0],c[0],a[0]];ys=[a[1],a[1],a[1],a[1],b[1],b[1],c[1],c[1],a[1]]
         p.append(f'<circle r="1.55" cx="{a[0]:.1f}" cy="{a[1]:.1f}"><animate attributeName="cx" values="'+ ';'.join(f'{v:.1f}' for v in xs)+'" keyTimes="0;.2113;.3028;.4437;.5352;.6761;.7676;.9085;1" begin="3.2s" dur="14.2s" repeatCount="indefinite"/><animate attributeName="cy" values="'+';'.join(f'{v:.1f}' for v in ys)+'" keyTimes="0;.2113;.3028;.4437;.5352;.6761;.7676;.9085;1" begin="3.2s" dur="14.2s" repeatCount="indefinite"/></circle>')
-    p.append('</g>'+txt(53,520,'PORTRAIT / CODE / REACT / AGENTS',10,muted))
+    p.append('</g>'+toolbox)
     rows=[('Subject','Smirthika Dharmalingam'),('Role','AI Developer / Full-Stack Builder'),('Status','Building + Learning + Shipping'),('Focus','AI agents + consent-first apps'),('ToolChain','Git / GitHub'),('', ''),('Core.Lang','Python / TypeScript / JavaScript'),('Core.Frontend','React / Next.js / Tailwind'),('Core.Backend','Django / FastAPI'),('Core.Database','MySQL / Supabase'),('Core.Infra','GitHub Actions / Vercel'),('', ''),('Grid.LinkedIn','in/smirthika-dharmalingam'),('Grid.GitHub','github.com/smirthi-dharma'),('Workspace','Open source + web applications')]
     for i,(label,value) in enumerate(rows):
         if not label: continue
