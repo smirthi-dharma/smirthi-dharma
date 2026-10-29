@@ -47,7 +47,7 @@ for mode,bg,panel,ink,muted,cyan,purple,border in [('dark','#0A101F','#0D1528','
     p.append(f'<rect x="1048" y="68" width="100" height="27" rx="13" fill="{panel}" stroke="{border}"/><circle class="live" cx="1065" cy="81" r="4" fill="#F87171"/>'+txt(1080,85,'LIVE',12,ink))
     p.append(f'<rect x="30" y="104" width="395" height="430" rx="10" fill="{panel}" stroke="{border}"/>')
     # One embedded portrait, referenced by both the intro and repeated dissolve layers.
-    p.append('<g clip-path="url(#portraitClip)"><g class="intro motion"><use xlink:href="#portrait"/><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;.2113;.3028;.9085;1" begin="3.2s" dur="14.2s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0 0;0 0;35 0;35 0;0 0" keyTimes="0;.2113;.3028;.9085;1" begin="3.2s" dur="14.2s" repeatCount="indefinite"/></g><g class="still"><use xlink:href="#portrait"/></g></g>')
+    p.append('<g clip-path="url(#portraitClip)"><g class="motion"><use xlink:href="#portrait"/><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;.2113;.3028;.9085;1" begin="3.2s" dur="14.2s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0 0;0 0;35 0;35 0;0 0" keyTimes="0;.2113;.3028;.9085;1" begin="3.2s" dur="14.2s" repeatCount="indefinite"/></g><g class="still"><use xlink:href="#portrait"/></g></g>')
     p.append(f'<g class="motion" transform="translate(77 122)" fill="{purple}" opacity="0"><animate attributeName="opacity" values="0;0;1;1;1;1;1;1;0" keyTimes="0;.2113;.3028;.4437;.5352;.6761;.7676;.9085;1" begin="3.2s" dur="14.2s" repeatCount="indefinite"/>')
     for i in range(N):
         a,b,c=[s[i] for s in shapes]

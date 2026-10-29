@@ -1,8 +1,8 @@
 <!-- Terminal profile inspired by the GitHub Portfolio guide shared by Automation With Clarity.
      Generated assets live in this repository; GitHub Actions refreshes public metrics. -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smirthi-dharma/smirthi-dharma/main/dark.svg?v=terminal3" />
-  <img src="https://raw.githubusercontent.com/smirthi-dharma/smirthi-dharma/main/light.svg?v=terminal3" width="100%" alt="Smirthika Dharmalingam — animated developer terminal: AI Developer, Full-Stack Builder and Open Source Contributor" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smirthi-dharma/smirthi-dharma/main/dark.svg?v=terminal4" />
+  <img src="https://raw.githubusercontent.com/smirthi-dharma/smirthi-dharma/main/light.svg?v=terminal4" width="100%" alt="Smirthika Dharmalingam — animated developer terminal: AI Developer, Full-Stack Builder and Open Source Contributor" />
 </picture>
 
 <br />
