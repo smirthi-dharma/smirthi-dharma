@@ -1,0 +1,43 @@
+name: Refresh contribution snake
+on:
+  schedule:
+    - cron: '23 3 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/contribution-snake.yml']
+permissions:
+  contents: write
+concurrency:
+  group: contribution-snake
+  cancel-in-progress: false
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Generate light and dark contribution animations
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-snake.svg?color_snake=#ba6b9c&color_dots=#f4e7f2,#F8BBD0,#EF93C4,#d477b0,#a95795
+            dist/github-snake-dark.svg?color_snake=#F8BBD0&color_dots=#261d32,#58334f,#99517e,#cf7caf,#EF93C4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish generated SVGs to output branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import base64, json, os, pathlib, subprocess
+          repo = os.environ['REPOSITORY']
+          for file in pathlib.Path('dist').glob('*.svg'):
+              endpoint = f'repos/{repo}/contents/{file.name}'
+              current = subprocess.run(['gh', 'api', endpoint + '?ref=output'], capture_output=True, text=True)
+              payload = {'message': 'Refresh contribution animation', 'branch': 'output', 'content': base64.b64encode(file.read_bytes()).decode()}
+              if current.returncode == 0:
+                  payload['sha'] = json.loads(current.stdout)['sha']
+              subprocess.run(['gh', 'api', '--method', 'PUT', endpoint, '--input', '-'], input=json.dumps(payload), text=True, check=True, stdout=subprocess.DEVNULL)
+          PY
