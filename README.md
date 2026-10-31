@@ -1,9 +1,31 @@
 <!-- Terminal profile inspired by the GitHub Portfolio guide shared by Automation With Clarity.
      Generated assets live in this repository; GitHub Actions refreshes public metrics. -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smirthi-dharma/smirthi-dharma/main/dark.svg?v=toolbox1" />
-  <img src="https://raw.githubusercontent.com/smirthi-dharma/smirthi-dharma/main/light.svg?v=toolbox1" width="100%" alt="Smirthika Dharmalingam — animated developer terminal: AI Developer, Full-Stack Builder and Open Source Contributor" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smirthi-dharma/smirthi-dharma/main/dark.svg?v=toolbox-separate2" />
+  <img src="https://raw.githubusercontent.com/smirthi-dharma/smirthi-dharma/main/light.svg?v=toolbox-separate2" width="100%" alt="Smirthika Dharmalingam — animated developer terminal: AI Developer, Full-Stack Builder and Open Source Contributor" />
 </picture>
+
+<h3 align="center">~/ toolbox</h3>
+<p align="center">
+  <img src="assets/tool-icons/Python-Dark.svg" width="42" height="42" alt="Python" />
+  <img src="assets/tool-icons/JavaScript.svg" width="42" height="42" alt="JavaScript" />
+  <img src="assets/tool-icons/TypeScript.svg" width="42" height="42" alt="TypeScript" />
+  <img src="assets/tool-icons/React-Dark.svg" width="42" height="42" alt="React" />
+  <img src="assets/tool-icons/NextJS-Dark.svg" width="42" height="42" alt="NextJS" />
+  <img src="assets/tool-icons/TailwindCSS-Dark.svg" width="42" height="42" alt="TailwindCSS" />
+  <img src="assets/tool-icons/Django.svg" width="42" height="42" alt="Django" />
+  <img src="assets/tool-icons/FastAPI.svg" width="42" height="42" alt="FastAPI" />
+  <br />
+  <img src="assets/tool-icons/MySQL-Dark.svg" width="42" height="42" alt="MySQL" />
+  <img src="assets/tool-icons/Supabase-Dark.svg" width="42" height="42" alt="Supabase" />
+  <img src="assets/tool-icons/Git.svg" width="42" height="42" alt="Git" />
+  <img src="assets/tool-icons/Github-Dark.svg" width="42" height="42" alt="Github" />
+  <img src="assets/tool-icons/HTML.svg" width="42" height="42" alt="HTML" />
+  <img src="assets/tool-icons/CSS.svg" width="42" height="42" alt="CSS" />
+  <img src="assets/tool-icons/GithubActions-Dark.svg" width="42" height="42" alt="GithubActions" />
+  <img src="assets/tool-icons/Vercel-Dark.svg" width="42" height="42" alt="Vercel" />
+</p>
+
 
 <br />
 

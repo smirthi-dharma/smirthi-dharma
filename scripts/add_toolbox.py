@@ -5,6 +5,7 @@ import re
 import urllib.request
 import xml.etree.ElementTree as ET
 
+raise SystemExit("Toolbox now lives separately in README.md; edit that section directly.")
 ROOT=Path(__file__).resolve().parents[1]
 ICONS=ROOT/'assets/tool-icons'
 ICONS.mkdir(exist_ok=True)
