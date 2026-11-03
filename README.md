@@ -69,6 +69,8 @@ I’d love to connect with people building thoughtful AI and web experiences.
 
 <div align="center">
   <a href="https://www.linkedin.com/in/smirthika-dharmalingam"><img src="assets/linkedin.svg" alt="Connect on LinkedIn" /></a>
+  <a href="https://www.instagram.com/smirtyyyyyyyy"><img src="assets/instagram.svg" alt="Follow me on Instagram" /></a>
+  <a href="mailto:smirthidharmaiit@gmail.com"><img src="assets/email.svg" alt="Email Smirthika" /></a>
 </div>
 
 <details>
