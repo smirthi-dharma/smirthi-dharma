@@ -49,13 +49,14 @@ for mode,bg,panel,ink,muted,cyan,purple,border in [('dark','#0A101F','#0D1528','
     p.append(f'<rect x="1048" y="68" width="100" height="27" rx="13" fill="{panel}" stroke="{border}"/><circle class="live" cx="1065" cy="81" r="4" fill="#F87171"/>'+txt(1080,85,'LIVE',12,ink))
     p.append(f'<rect x="30" y="104" width="395" height="430" rx="10" fill="{panel}" stroke="{border}"/>')
     # One embedded portrait, referenced by both the intro and repeated dissolve layers.
-    p.append('<g clip-path="url(#portraitClip)"><g class="motion"><use xlink:href="#portrait"/><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;.2113;.3028;.9085;1" begin="3.2s" dur="14.2s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0 0;0 0;35 0;35 0;0 0" keyTimes="0;.2113;.3028;.9085;1" begin="3.2s" dur="14.2s" repeatCount="indefinite"/></g><g class="still"><use xlink:href="#portrait"/></g></g>')
-    p.append(f'<g class="motion" transform="translate(77 122)" fill="{purple}" opacity="0"><animate attributeName="opacity" values="0;0;1;1;1;1;1;1;0" keyTimes="0;.2113;.3028;.4437;.5352;.6761;.7676;.9085;1" begin="3.2s" dur="14.2s" repeatCount="indefinite"/>')
-    for i in range(N):
-        a,b,c=[s[i] for s in shapes]
-        xs=[a[0],a[0],a[0],a[0],b[0],b[0],c[0],c[0],a[0]];ys=[a[1],a[1],a[1],a[1],b[1],b[1],c[1],c[1],a[1]]
-        p.append(f'<circle r="1.55" cx="{a[0]:.1f}" cy="{a[1]:.1f}"><animate attributeName="cx" values="'+ ';'.join(f'{v:.1f}' for v in xs)+'" keyTimes="0;.2113;.3028;.4437;.5352;.6761;.7676;.9085;1" begin="3.2s" dur="14.2s" repeatCount="indefinite"/><animate attributeName="cy" values="'+';'.join(f'{v:.1f}' for v in ys)+'" keyTimes="0;.2113;.3028;.4437;.5352;.6761;.7676;.9085;1" begin="3.2s" dur="14.2s" repeatCount="indefinite"/></circle>')
-    p.append('</g>')
+    # A gentle portrait float with a few softly pulsing particles. Reduced-motion
+    # visitors get the static portrait via the .still fallback.
+    p.append(f'''<g clip-path="url(#portraitClip)">
+      <g class="motion"><use xlink:href="#portrait"><animateTransform attributeName="transform" type="translate" values="0 0;0 -5;0 0" dur="6s" repeatCount="indefinite" /></use>
+      <circle cx="90" cy="180" r="2.5" fill="{cyan}" opacity=".55"><animate attributeName="opacity" values=".15;.8;.15" dur="3.8s" repeatCount="indefinite" /></circle>
+      <circle cx="350" cy="210" r="3" fill="{purple}" opacity=".5"><animate attributeName="opacity" values=".6;.1;.6" dur="4.7s" repeatCount="indefinite" /></circle>
+      <circle cx="330" cy="370" r="2" fill="{cyan}" opacity=".5"><animate attributeName="opacity" values=".1;.7;.1" dur="5.3s" repeatCount="indefinite" /></circle>
+      </g><g class="still"><use xlink:href="#portrait"/></g></g>''')
     # Short, left-aligned lines remain readable when GitHub scales the banner.
     p.append(txt(470,135,'SMIRTHIKA DHARMALINGAM',25,ink,'font-weight="700"'))
     p.append(txt(470,166,'AI DEVELOPER  /  FULL-STACK BUILDER',16,cyan))
