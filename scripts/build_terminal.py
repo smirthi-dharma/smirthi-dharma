@@ -71,74 +71,7 @@ for mode,bg,panel,ink,muted,cyan,purple,border in [('dark','#0A101F','#0D1528','
     (ROOT/f'{mode}.svg').write_text(''.join(p),encoding='utf-8')
 
 (ROOT/'assets/linkedin.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg" width="155" height="36" viewBox="0 0 155 36"><rect width="155" height="36" rx="4" fill="#0A66C2"/><text x="15" y="25" font-family="Arial" font-size="24" font-weight="700" fill="white">in</text><text x="50" y="23" font-family="Arial" font-size="13" letter-spacing="1" fill="white">LINKEDIN</text></svg>',encoding='utf-8')
-readme='''<!-- Terminal profile inspired by the GitHub Portfolio guide shared by Automation With Clarity.
-     Generated assets live in this repository; GitHub Actions refreshes public metrics. -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="dark.svg" />
-  <img src="light.svg" width="100%" alt="Smirthika Dharmalingam — animated developer terminal: AI Developer, Full-Stack Builder and Open Source Contributor" />
-</picture>
-
-<h3 align="center">~/ toolbox</h3>
-<p align="center">
-  <img src="assets/tool-icons/Python-Dark.svg" width="42" height="42" alt="Python" />
-  <img src="assets/tool-icons/JavaScript.svg" width="42" height="42" alt="JavaScript" />
-  <img src="assets/tool-icons/TypeScript.svg" width="42" height="42" alt="TypeScript" />
-  <img src="assets/tool-icons/React-Dark.svg" width="42" height="42" alt="React" />
-  <img src="assets/tool-icons/NextJS-Dark.svg" width="42" height="42" alt="NextJS" />
-  <img src="assets/tool-icons/TailwindCSS-Dark.svg" width="42" height="42" alt="TailwindCSS" />
-  <img src="assets/tool-icons/Django.svg" width="42" height="42" alt="Django" />
-  <img src="assets/tool-icons/FastAPI.svg" width="42" height="42" alt="FastAPI" />
-  <br />
-  <img src="assets/tool-icons/MySQL-Dark.svg" width="42" height="42" alt="MySQL" />
-  <img src="assets/tool-icons/Supabase-Dark.svg" width="42" height="42" alt="Supabase" />
-  <img src="assets/tool-icons/Git.svg" width="42" height="42" alt="Git" />
-  <img src="assets/tool-icons/Github-Dark.svg" width="42" height="42" alt="Github" />
-  <img src="assets/tool-icons/HTML.svg" width="42" height="42" alt="HTML" />
-  <img src="assets/tool-icons/CSS.svg" width="42" height="42" alt="CSS" />
-  <img src="assets/tool-icons/GithubActions-Dark.svg" width="42" height="42" alt="GithubActions" />
-  <img src="assets/tool-icons/Vercel-Dark.svg" width="42" height="42" alt="Vercel" />
-</p>
-
-<br />
-
-<div align="center">
-'''
-for name,width,alt in [('streak','100%','Public contribution activity and current and longest streaks in the last 12 months'),('stats','49%','GitHub contribution statistics'),('languages','49%','Language distribution by code bytes in public repositories, including forks')]:
-    readme+=f'''<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smirthi-dharma/smirthi-dharma/output/{name}-dark.svg" />
-  <img width="{width}" src="https://raw.githubusercontent.com/smirthi-dharma/smirthi-dharma/output/{name}-light.svg" alt="{alt}" />
-</picture>
-'''
-    if name=='streak': readme+='<br /><br />\n'
-readme+='''</div>
-
-<br />
-
-<div align="center">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smirthi-dharma/smirthi-dharma/output/github-snake-dark.svg" />
-  <img width="100%" src="https://raw.githubusercontent.com/smirthi-dharma/smirthi-dharma/output/github-snake.svg" alt="Animated snake eating my GitHub contributions" />
-</picture>
-</div>
-
-<br />
-
-<div align="center">
-  <a href="https://www.linkedin.com/in/smirthika-dharmalingam"><img src="assets/linkedin.svg" alt="Connect on LinkedIn" /></a>
-</div>
-
-<details>
-<summary>Explore my projects &amp; how these stats work</summary>
-
-- [Hushh Research](https://github.com/smirthi-dharma/hushh-research) — personal AI agents and consent-driven experiences.
-- [Hushh Tech Website](https://github.com/smirthi-dharma/hushh_Tech_website) — public web experiences and API integrations.
-- [Super Market](https://github.com/smirthi-dharma/e-commerce-) — React storefront and Django API.
-
-These repositories are public forks in my workspace. Activity cards use GitHub's public contribution data for the trailing year and refresh every 12 hours. The current streak allows today to remain in progress; the longest streak is limited to the displayed year. Language percentages represent code volume across public repositories, including forks, with this profile repository excluded. They are not a skill rating.
-
-</details>
-'''
-(ROOT/'README.md').write_text(readme,encoding='utf-8')
+# README is maintained independently so banner regeneration preserves profile edits.
 workflow=(ROOT/'.github/workflows/contribution-snake.yml').read_text(encoding='utf-8')
 workflow=workflow.replace('Refresh contribution snake','Refresh profile activity').replace("'23 3 * * *'","'23 */12 * * *'")
 workflow=workflow.replace("paths: ['.github/workflows/contribution-snake.yml']","paths: ['.github/workflows/contribution-snake.yml', 'scripts/refresh_stats.py']")
