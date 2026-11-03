@@ -1,8 +1,8 @@
 <!-- Terminal profile inspired by the GitHub Portfolio guide shared by Automation With Clarity.
      Generated assets live in this repository; GitHub Actions refreshes public metrics. -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smirthi-dharma/smirthi-dharma/main/dark.svg?v=toolbox-separate2" />
-  <img src="https://raw.githubusercontent.com/smirthi-dharma/smirthi-dharma/main/light.svg?v=toolbox-separate2" width="100%" alt="Smirthika Dharmalingam — animated developer terminal: AI Developer, Full-Stack Builder and Open Source Contributor" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/smirthi-dharma/smirthi-dharma/main/dark.svg?v=readable3" />
+  <img src="https://raw.githubusercontent.com/smirthi-dharma/smirthi-dharma/main/light.svg?v=readable3" width="100%" alt="Smirthika Dharmalingam — animated developer terminal: AI Developer, Full-Stack Builder and Open Source Contributor" />
 </picture>
 
 <h3 align="center">~/ toolbox</h3>

@@ -56,14 +56,17 @@ for mode,bg,panel,ink,muted,cyan,purple,border in [('dark','#0A101F','#0D1528','
         xs=[a[0],a[0],a[0],a[0],b[0],b[0],c[0],c[0],a[0]];ys=[a[1],a[1],a[1],a[1],b[1],b[1],c[1],c[1],a[1]]
         p.append(f'<circle r="1.55" cx="{a[0]:.1f}" cy="{a[1]:.1f}"><animate attributeName="cx" values="'+ ';'.join(f'{v:.1f}' for v in xs)+'" keyTimes="0;.2113;.3028;.4437;.5352;.6761;.7676;.9085;1" begin="3.2s" dur="14.2s" repeatCount="indefinite"/><animate attributeName="cy" values="'+';'.join(f'{v:.1f}' for v in ys)+'" keyTimes="0;.2113;.3028;.4437;.5352;.6761;.7676;.9085;1" begin="3.2s" dur="14.2s" repeatCount="indefinite"/></circle>')
     p.append('</g>')
-    rows=[('Subject','Smirthika Dharmalingam'),('Role','AI Developer / Full-Stack Builder'),('Status','Building + Learning + Shipping'),('Focus','AI agents + consent-first apps'),('ToolChain','Git / GitHub'),('', ''),('Core.Lang','Python / TypeScript / JavaScript'),('Core.Frontend','React / Next.js / Tailwind'),('Core.Backend','Django / FastAPI'),('Core.Database','MySQL / Supabase'),('Core.Infra','GitHub Actions / Vercel'),('', ''),('Grid.LinkedIn','in/smirthika-dharmalingam'),('Grid.GitHub','github.com/smirthi-dharma'),('Workspace','Open source + web applications')]
-    for i,(label,value) in enumerate(rows):
-        if not label: continue
-        y=128+i*24
-        leaders='.'*max(2,63-len(label)-len(value))
-        row=label+' '+leaders+' '+value
-        p.append(txt(470,y,row,14,muted,'textLength="670" lengthAdjust="spacingAndGlyphs"'))
-    p.append(f'<rect x="470" y="506" width="250" height="32" rx="16" fill="{purple}" fill-opacity=".13" stroke="{purple}" stroke-opacity=".4"/>'+txt(491,527,'@smirthi-dharma',14,purple))
+    # Short, left-aligned lines remain readable when GitHub scales the banner.
+    p.append(txt(470,135,'SMIRTHIKA DHARMALINGAM',25,ink,'font-weight="700"'))
+    p.append(txt(470,166,'AI DEVELOPER  /  FULL-STACK BUILDER',16,cyan))
+    p.append(txt(470,220,'WHAT I WORK ON',16,purple,'font-weight="700"'))
+    p.append(txt(470,253,'Personal AI agents and consent-driven data',19,ink))
+    p.append(txt(470,281,'experiences, from interface to backend.',19,ink))
+    p.append(txt(470,337,'SELECTED WORK',16,purple,'font-weight="700"'))
+    p.append(txt(470,370,'Hushh Research  /  AI agents & consent',19,ink))
+    p.append(txt(470,401,'Hushh Tech  /  web & API integrations',19,ink))
+    p.append(txt(470,432,'Super Market  /  storefront & Django API',19,ink))
+    p.append(txt(470,494,'Open source contributor',17,muted))
     p.append(f'<path d="M30 555H1150" stroke="{border}"/>'+txt(31,584,'❯',17,'#10B981')+txt(55,583,'ready to build something meaningful_',13,cyan)+txt(969,583,'SYSTEM / ONLINE',12,'#10B981')+'</svg>')
     (ROOT/f'{mode}.svg').write_text(''.join(p),encoding='utf-8')
 
